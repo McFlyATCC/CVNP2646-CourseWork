@@ -1,0 +1,11 @@
+{
+  "blocklist_name": "Critical Threats",
+  "generated": "2024-01-08",
+  "ips": [
+    {
+      "ip": "192.0.2.10",
+      "reason": "malware_distribution",
+      "attacks": 489
+    }
+  ]
+}
