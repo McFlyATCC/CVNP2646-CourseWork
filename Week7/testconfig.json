@@ -1,0 +1,38 @@
+{
+  "metadata": {
+    "plan_name": "Security Logs Backup",
+    "version": "1.0",
+    "created_by": "SecOps",
+    "description": "Simulation for firewall, IDS, and auth logs"
+  },
+  "sources": [
+    {
+      "name": "Firewall Logs",
+      "path": "/var/log/firewall",
+      "recursive": true,
+      "include_patterns": ["*.log", "*.txt"],
+      "exclude_patterns": ["*.tmp", "debug_*"]
+    },
+    {
+      "name": "IDS Alerts",
+      "path": "/var/log/ids",
+      "recursive": true,
+      "include_patterns": ["*.json", "*.log"]
+    },
+    {
+      "name": "Auth Logs",
+      "path": "/var/log",
+      "recursive": false,
+      "include_patterns": ["auth.log*", "secure*"]
+    }
+  ],
+  "destination": {
+    "base_path": "/backups/security",
+    "create_timestamped_folders": true,
+    "retention_days": 30
+  },
+  "options": {
+    "verify_backups": true,
+    "max_file_size_mb": 60
+  }
+}
