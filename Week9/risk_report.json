@@ -1,0 +1,98 @@
+{
+  "report_date": "2026-03-10T11:27:03",
+  "report_type": "High Risk Host Assessment",
+  "total_hosts": 20,
+  "total_high_risk": 7,
+  "risk_distribution": {
+    "critical": 0,
+    "high": 7,
+    "medium": 11,
+    "low": 2
+  },
+  "high_risk_hosts": [
+    {
+      "hostname": "FIN-WKS-001",
+      "risk_score": 65,
+      "risk_level": "high",
+      "days_since_patch": 24,
+      "criticality": "high",
+      "environment": "production",
+      "tags": [
+        "pci-scope",
+        "internet-facing"
+      ]
+    },
+    {
+      "hostname": "EXEC-WKS-002",
+      "risk_score": 65,
+      "risk_level": "high",
+      "days_since_patch": 29,
+      "criticality": "critical",
+      "environment": "production",
+      "tags": [
+        "vip",
+        "pci-scope"
+      ]
+    },
+    {
+      "hostname": "FIN-WKS-002",
+      "risk_score": 60,
+      "risk_level": "high",
+      "days_since_patch": 40,
+      "criticality": "high",
+      "environment": "production",
+      "tags": [
+        "pci-scope",
+        "encrypted"
+      ]
+    },
+    {
+      "hostname": "IT-ADM-001",
+      "risk_score": 55,
+      "risk_level": "high",
+      "days_since_patch": 17,
+      "criticality": "critical",
+      "environment": "production",
+      "tags": [
+        "privileged-access",
+        "domain-joined"
+      ]
+    },
+    {
+      "hostname": "IT-SEC-001",
+      "risk_score": 55,
+      "risk_level": "high",
+      "days_since_patch": 16,
+      "criticality": "critical",
+      "environment": "production",
+      "tags": [
+        "privileged-access",
+        "edr-managed"
+      ]
+    },
+    {
+      "hostname": "IT-SEC-002",
+      "risk_score": 55,
+      "risk_level": "high",
+      "days_since_patch": 21,
+      "criticality": "critical",
+      "environment": "production",
+      "tags": [
+        "siem-forwarder",
+        "linux"
+      ]
+    },
+    {
+      "hostname": "EXEC-WKS-001",
+      "risk_score": 55,
+      "risk_level": "high",
+      "days_since_patch": 15,
+      "criticality": "critical",
+      "environment": "production",
+      "tags": [
+        "vip",
+        "encrypted"
+      ]
+    }
+  ]
+}

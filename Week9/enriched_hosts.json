@@ -1,0 +1,362 @@
+[
+  {
+    "hostname": "FIN-WKS-001",
+    "ip_address": "10.10.10.11",
+    "os": "Windows 11 Pro",
+    "os_version": "23H2",
+    "last_patch_date": "2026-02-14",
+    "criticality": "high",
+    "environment": "production",
+    "department": "Finance",
+    "owner": "jsmith@company.com",
+    "tags": [
+      "pci-scope",
+      "internet-facing"
+    ],
+    "days_since_patch": 24,
+    "risk_score": 65,
+    "risk_level": "high"
+  },
+  {
+    "hostname": "FIN-WKS-002",
+    "ip_address": "10.10.10.12",
+    "os": "Windows 10 Enterprise",
+    "os_version": "22H2",
+    "last_patch_date": "2026-01-29",
+    "criticality": "high",
+    "environment": "production",
+    "department": "Finance",
+    "owner": "mjohnson@company.com",
+    "tags": [
+      "pci-scope",
+      "encrypted"
+    ],
+    "days_since_patch": 40,
+    "risk_score": 60,
+    "risk_level": "high"
+  },
+  {
+    "hostname": "HR-WKS-001",
+    "ip_address": "10.10.20.11",
+    "os": "Windows 11 Pro",
+    "os_version": "24H2",
+    "last_patch_date": "2026-02-20",
+    "criticality": "medium",
+    "environment": "production",
+    "department": "Human Resources",
+    "owner": "abrown@company.com",
+    "tags": [
+      "sensitive-data",
+      "vpn-required"
+    ],
+    "days_since_patch": 18,
+    "risk_score": 25,
+    "risk_level": "medium"
+  },
+  {
+    "hostname": "HR-WKS-002",
+    "ip_address": "10.10.20.12",
+    "os": "macOS",
+    "os_version": "14.6",
+    "last_patch_date": "2026-02-18",
+    "criticality": "medium",
+    "environment": "production",
+    "department": "Human Resources",
+    "owner": "dlee@company.com",
+    "tags": [
+      "encrypted",
+      "remote-user"
+    ],
+    "days_since_patch": 20,
+    "risk_score": 25,
+    "risk_level": "medium"
+  },
+  {
+    "hostname": "ENG-WKS-001",
+    "ip_address": "10.10.30.21",
+    "os": "Windows 11 Enterprise",
+    "os_version": "23H2",
+    "last_patch_date": "2026-02-10",
+    "criticality": "high",
+    "environment": "production",
+    "department": "Engineering",
+    "owner": "rpatel@company.com",
+    "tags": [
+      "developer-tools",
+      "source-code-access"
+    ],
+    "days_since_patch": 28,
+    "risk_score": 40,
+    "risk_level": "medium"
+  },
+  {
+    "hostname": "ENG-WKS-002",
+    "ip_address": "10.10.30.22",
+    "os": "Ubuntu",
+    "os_version": "22.04",
+    "last_patch_date": "2026-02-16",
+    "criticality": "high",
+    "environment": "production",
+    "department": "Engineering",
+    "owner": "knguyen@company.com",
+    "tags": [
+      "linux",
+      "container-host"
+    ],
+    "days_since_patch": 22,
+    "risk_score": 40,
+    "risk_level": "medium"
+  },
+  {
+    "hostname": "ENG-WKS-003",
+    "ip_address": "10.10.30.23",
+    "os": "macOS",
+    "os_version": "15.1",
+    "last_patch_date": "2026-02-11",
+    "criticality": "medium",
+    "environment": "development",
+    "department": "Engineering",
+    "owner": "tanderson@company.com",
+    "tags": [
+      "developer-tools",
+      "remote-user"
+    ],
+    "days_since_patch": 27,
+    "risk_score": 13,
+    "risk_level": "low"
+  },
+  {
+    "hostname": "MKT-WKS-001",
+    "ip_address": "10.10.40.11",
+    "os": "Windows 11 Pro",
+    "os_version": "23H2",
+    "last_patch_date": "2026-02-08",
+    "criticality": "low",
+    "environment": "production",
+    "department": "Marketing",
+    "owner": "lgarcia@company.com",
+    "tags": [
+      "design-suite",
+      "cloud-only"
+    ],
+    "days_since_patch": 30,
+    "risk_score": 20,
+    "risk_level": "low"
+  },
+  {
+    "hostname": "MKT-WKS-002",
+    "ip_address": "10.10.40.12",
+    "os": "macOS",
+    "os_version": "14.5",
+    "last_patch_date": "2026-02-07",
+    "criticality": "low",
+    "environment": "production",
+    "department": "Marketing",
+    "owner": "cwilson@company.com",
+    "tags": [
+      "design-suite",
+      "remote-user"
+    ],
+    "days_since_patch": 31,
+    "risk_score": 30,
+    "risk_level": "medium"
+  },
+  {
+    "hostname": "SALES-WKS-001",
+    "ip_address": "10.10.50.11",
+    "os": "Windows 11 Pro",
+    "os_version": "24H2",
+    "last_patch_date": "2026-02-19",
+    "criticality": "medium",
+    "environment": "production",
+    "department": "Sales",
+    "owner": "jmartin@company.com",
+    "tags": [
+      "crm-access",
+      "remote-user"
+    ],
+    "days_since_patch": 19,
+    "risk_score": 25,
+    "risk_level": "medium"
+  },
+  {
+    "hostname": "SALES-WKS-002",
+    "ip_address": "10.10.50.12",
+    "os": "Windows 10 Pro",
+    "os_version": "22H2",
+    "last_patch_date": "2026-01-25",
+    "criticality": "medium",
+    "environment": "production",
+    "department": "Sales",
+    "owner": "ewalker@company.com",
+    "tags": [
+      "crm-access",
+      "vpn-required"
+    ],
+    "days_since_patch": 44,
+    "risk_score": 35,
+    "risk_level": "medium"
+  },
+  {
+    "hostname": "IT-ADM-001",
+    "ip_address": "10.10.60.10",
+    "os": "Windows Server 2022",
+    "os_version": "21H2",
+    "last_patch_date": "2026-02-21",
+    "criticality": "critical",
+    "environment": "production",
+    "department": "IT",
+    "owner": "adminops@company.com",
+    "tags": [
+      "privileged-access",
+      "domain-joined"
+    ],
+    "days_since_patch": 17,
+    "risk_score": 55,
+    "risk_level": "high"
+  },
+  {
+    "hostname": "IT-SEC-001",
+    "ip_address": "10.10.60.20",
+    "os": "Windows 11 Enterprise",
+    "os_version": "23H2",
+    "last_patch_date": "2026-02-22",
+    "criticality": "critical",
+    "environment": "production",
+    "department": "Security",
+    "owner": "soclead@company.com",
+    "tags": [
+      "privileged-access",
+      "edr-managed"
+    ],
+    "days_since_patch": 16,
+    "risk_score": 55,
+    "risk_level": "high"
+  },
+  {
+    "hostname": "IT-SEC-002",
+    "ip_address": "10.10.60.21",
+    "os": "Ubuntu",
+    "os_version": "24.04",
+    "last_patch_date": "2026-02-17",
+    "criticality": "critical",
+    "environment": "production",
+    "department": "Security",
+    "owner": "analyst1@company.com",
+    "tags": [
+      "siem-forwarder",
+      "linux"
+    ],
+    "days_since_patch": 21,
+    "risk_score": 55,
+    "risk_level": "high"
+  },
+  {
+    "hostname": "OPS-WKS-001",
+    "ip_address": "10.10.70.11",
+    "os": "Windows 11 Pro",
+    "os_version": "23H2",
+    "last_patch_date": "2026-02-12",
+    "criticality": "medium",
+    "environment": "production",
+    "department": "Operations",
+    "owner": "bthomas@company.com",
+    "tags": [
+      "erp-access",
+      "shared-device"
+    ],
+    "days_since_patch": 26,
+    "risk_score": 25,
+    "risk_level": "medium"
+  },
+  {
+    "hostname": "OPS-WKS-002",
+    "ip_address": "10.10.70.12",
+    "os": "Windows 10 Enterprise",
+    "os_version": "22H2",
+    "last_patch_date": "2026-01-30",
+    "criticality": "medium",
+    "environment": "staging",
+    "department": "Operations",
+    "owner": "sdavis@company.com",
+    "tags": [
+      "erp-access",
+      "test-device"
+    ],
+    "days_since_patch": 39,
+    "risk_score": 28,
+    "risk_level": "medium"
+  },
+  {
+    "hostname": "RND-WKS-001",
+    "ip_address": "10.10.80.11",
+    "os": "Ubuntu",
+    "os_version": "22.04",
+    "last_patch_date": "2026-02-15",
+    "criticality": "high",
+    "environment": "development",
+    "department": "R&D",
+    "owner": "research1@company.com",
+    "tags": [
+      "prototype",
+      "lab-network"
+    ],
+    "days_since_patch": 23,
+    "risk_score": 28,
+    "risk_level": "medium"
+  },
+  {
+    "hostname": "RND-WKS-002",
+    "ip_address": "10.10.80.12",
+    "os": "Windows 11 Enterprise",
+    "os_version": "24H2",
+    "last_patch_date": "2026-02-13",
+    "criticality": "high",
+    "environment": "development",
+    "department": "R&D",
+    "owner": "research2@company.com",
+    "tags": [
+      "prototype",
+      "gpu-enabled"
+    ],
+    "days_since_patch": 25,
+    "risk_score": 28,
+    "risk_level": "medium"
+  },
+  {
+    "hostname": "EXEC-WKS-001",
+    "ip_address": "10.10.90.11",
+    "os": "macOS",
+    "os_version": "15.0",
+    "last_patch_date": "2026-02-23",
+    "criticality": "critical",
+    "environment": "production",
+    "department": "Executive",
+    "owner": "ceo@company.com",
+    "tags": [
+      "vip",
+      "encrypted"
+    ],
+    "days_since_patch": 15,
+    "risk_score": 55,
+    "risk_level": "high"
+  },
+  {
+    "hostname": "EXEC-WKS-002",
+    "ip_address": "10.10.90.12",
+    "os": "Windows 11 Pro",
+    "os_version": "23H2",
+    "last_patch_date": "2026-02-09",
+    "criticality": "critical",
+    "environment": "production",
+    "department": "Executive",
+    "owner": "cfo@company.com",
+    "tags": [
+      "vip",
+      "pci-scope"
+    ],
+    "days_since_patch": 29,
+    "risk_score": 65,
+    "risk_level": "high"
+  }
+]

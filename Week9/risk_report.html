@@ -1,0 +1,335 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>High-Risk Host Assessment</title>
+<style>
+    :root {
+        --bg: #0f172a; --card: #111827; --text: #e5e7eb; --muted: #9ca3af;
+        --critical: #fee2e2; --critical-border: #dc2626;
+        --high: #ffedd5; --high-border: #ea580c;
+        --medium: #fef3c7; --medium-border: #d97706;
+        --low: #ecfccb; --low-border: #65a30d; --accent: #3b82f6;
+    }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 24px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .header { display:flex; align-items:center; justify-content:space-between; margin-bottom: 16px; }
+    .title { font-size: 24px; font-weight: 700; }
+    .subtitle { color: var(--muted); font-size: 14px; }
+    .cards { display:grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0; }
+    .card { background: var(--card); padding: 16px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
+    .card h3 { margin: 0 0 8px 0; font-size: 14px; color: var(--muted); font-weight: 600; }
+    .card .value { font-size: 22px; font-weight: 700; }
+    table { width:100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; }
+    thead th { position: sticky; top:0; background: #0b1220; color: var(--text); text-align:left; padding:10px; font-size: 13px; cursor: pointer; }
+    tbody td { padding: 10px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 13px; }
+    tr.row-critical { background: var(--critical); color: #7f1d1d; border-left: 4px solid var(--critical-border); }
+    tr.row-high { background: var(--high); color: #7c2d12; border-left: 4px solid var(--high-border); }
+    tr.row-medium { background: var(--medium); color: #78350f; border-left: 4px solid var(--medium-border); }
+    tr.row-low { background: var(--low); color: #365314; border-left: 4px solid var(--low-border); }
+    .note { color: var(--muted); font-size: 12px; margin-top: 8px; }
+</style>
+<script>
+    function sortTable(n) {
+      const table = document.getElementById('riskTable');
+      const tbody = table.tBodies[0];
+      const rows = Array.from(tbody.rows);
+      const ascending = table.getAttribute('data-sort-col') == n && table.getAttribute('data-sort-dir') == 'asc' ? false : true;
+      rows.sort((a, b) => {
+        const aCell = a.cells[n];
+        const bCell = b.cells[n];
+        const aNum = aCell.getAttribute('data-num');
+        const bNum = bCell.getAttribute('data-num');
+        let cmp;
+        if (aNum !== null && aNum !== '' && !isNaN(parseFloat(aNum)) && bNum !== null && bNum !== '' && !isNaN(parseFloat(bNum))) {
+          cmp = parseFloat(aNum) - parseFloat(bNum);
+        } else {
+          cmp = aCell.textContent.localeCompare(bCell.textContent, undefined, { sensitivity: 'base' });
+        }
+        return ascending ? cmp : -cmp;
+      });
+      rows.forEach(r => tbody.appendChild(r));
+      table.setAttribute('data-sort-col', n);
+      table.setAttribute('data-sort-dir', ascending ? 'asc' : 'desc');
+    }
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <div class="title">High Risk Host Assessment</div>
+        <div class="subtitle">Generated: 2026-03-10 11:27:03</div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card"><h3>Total Hosts</h3><div class="value">20</div></div>
+      <div class="card"><h3>Critical</h3><div class="value">0</div></div>
+      <div class="card"><h3>High</h3><div class="value">7</div></div>
+      <div class="card"><h3>Medium</h3><div class="value">11</div></div>
+      <div class="card"><h3>Low</h3><div class="value">2</div></div>
+    </div>
+    <table id="riskTable" data-sort-col="6" data-sort-dir="desc">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">Hostname</th>
+          <th onclick="sortTable(1)">IP Address</th>
+          <th onclick="sortTable(2)">OS</th>
+          <th onclick="sortTable(3)">Environment</th>
+          <th onclick="sortTable(4)">Criticality</th>
+          <th onclick="sortTable(5)">Days Since Patch</th>
+          <th onclick="sortTable(6)">Risk Score</th>
+          <th onclick="sortTable(7)">Risk Level</th>
+          <th onclick="sortTable(8)">Tags</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr class='row-high'>
+            <td>FIN-WKS-001</td>
+            <td>10.10.10.11</td>
+            <td>Windows 11 Pro</td>
+            <td>production</td>
+            <td>high</td>
+            <td data-num='24'>24</td>
+            <td data-num='65'>65</td>
+            <td>high</td>
+            <td>pci-scope, internet-facing</td>
+        </tr>
+        
+        <tr class='row-high'>
+            <td>EXEC-WKS-002</td>
+            <td>10.10.90.12</td>
+            <td>Windows 11 Pro</td>
+            <td>production</td>
+            <td>critical</td>
+            <td data-num='29'>29</td>
+            <td data-num='65'>65</td>
+            <td>high</td>
+            <td>vip, pci-scope</td>
+        </tr>
+        
+        <tr class='row-high'>
+            <td>FIN-WKS-002</td>
+            <td>10.10.10.12</td>
+            <td>Windows 10 Enterprise</td>
+            <td>production</td>
+            <td>high</td>
+            <td data-num='40'>40</td>
+            <td data-num='60'>60</td>
+            <td>high</td>
+            <td>pci-scope, encrypted</td>
+        </tr>
+        
+        <tr class='row-high'>
+            <td>IT-ADM-001</td>
+            <td>10.10.60.10</td>
+            <td>Windows Server 2022</td>
+            <td>production</td>
+            <td>critical</td>
+            <td data-num='17'>17</td>
+            <td data-num='55'>55</td>
+            <td>high</td>
+            <td>privileged-access, domain-joined</td>
+        </tr>
+        
+        <tr class='row-high'>
+            <td>IT-SEC-001</td>
+            <td>10.10.60.20</td>
+            <td>Windows 11 Enterprise</td>
+            <td>production</td>
+            <td>critical</td>
+            <td data-num='16'>16</td>
+            <td data-num='55'>55</td>
+            <td>high</td>
+            <td>privileged-access, edr-managed</td>
+        </tr>
+        
+        <tr class='row-high'>
+            <td>IT-SEC-002</td>
+            <td>10.10.60.21</td>
+            <td>Ubuntu</td>
+            <td>production</td>
+            <td>critical</td>
+            <td data-num='21'>21</td>
+            <td data-num='55'>55</td>
+            <td>high</td>
+            <td>siem-forwarder, linux</td>
+        </tr>
+        
+        <tr class='row-high'>
+            <td>EXEC-WKS-001</td>
+            <td>10.10.90.11</td>
+            <td>macOS</td>
+            <td>production</td>
+            <td>critical</td>
+            <td data-num='15'>15</td>
+            <td data-num='55'>55</td>
+            <td>high</td>
+            <td>vip, encrypted</td>
+        </tr>
+        
+        <tr class='row-medium'>
+            <td>ENG-WKS-001</td>
+            <td>10.10.30.21</td>
+            <td>Windows 11 Enterprise</td>
+            <td>production</td>
+            <td>high</td>
+            <td data-num='28'>28</td>
+            <td data-num='40'>40</td>
+            <td>medium</td>
+            <td>developer-tools, source-code-access</td>
+        </tr>
+        
+        <tr class='row-medium'>
+            <td>ENG-WKS-002</td>
+            <td>10.10.30.22</td>
+            <td>Ubuntu</td>
+            <td>production</td>
+            <td>high</td>
+            <td data-num='22'>22</td>
+            <td data-num='40'>40</td>
+            <td>medium</td>
+            <td>linux, container-host</td>
+        </tr>
+        
+        <tr class='row-medium'>
+            <td>SALES-WKS-002</td>
+            <td>10.10.50.12</td>
+            <td>Windows 10 Pro</td>
+            <td>production</td>
+            <td>medium</td>
+            <td data-num='44'>44</td>
+            <td data-num='35'>35</td>
+            <td>medium</td>
+            <td>crm-access, vpn-required</td>
+        </tr>
+        
+        <tr class='row-medium'>
+            <td>MKT-WKS-002</td>
+            <td>10.10.40.12</td>
+            <td>macOS</td>
+            <td>production</td>
+            <td>low</td>
+            <td data-num='31'>31</td>
+            <td data-num='30'>30</td>
+            <td>medium</td>
+            <td>design-suite, remote-user</td>
+        </tr>
+        
+        <tr class='row-medium'>
+            <td>OPS-WKS-002</td>
+            <td>10.10.70.12</td>
+            <td>Windows 10 Enterprise</td>
+            <td>staging</td>
+            <td>medium</td>
+            <td data-num='39'>39</td>
+            <td data-num='28'>28</td>
+            <td>medium</td>
+            <td>erp-access, test-device</td>
+        </tr>
+        
+        <tr class='row-medium'>
+            <td>RND-WKS-001</td>
+            <td>10.10.80.11</td>
+            <td>Ubuntu</td>
+            <td>development</td>
+            <td>high</td>
+            <td data-num='23'>23</td>
+            <td data-num='28'>28</td>
+            <td>medium</td>
+            <td>prototype, lab-network</td>
+        </tr>
+        
+        <tr class='row-medium'>
+            <td>RND-WKS-002</td>
+            <td>10.10.80.12</td>
+            <td>Windows 11 Enterprise</td>
+            <td>development</td>
+            <td>high</td>
+            <td data-num='25'>25</td>
+            <td data-num='28'>28</td>
+            <td>medium</td>
+            <td>prototype, gpu-enabled</td>
+        </tr>
+        
+        <tr class='row-medium'>
+            <td>HR-WKS-001</td>
+            <td>10.10.20.11</td>
+            <td>Windows 11 Pro</td>
+            <td>production</td>
+            <td>medium</td>
+            <td data-num='18'>18</td>
+            <td data-num='25'>25</td>
+            <td>medium</td>
+            <td>sensitive-data, vpn-required</td>
+        </tr>
+        
+        <tr class='row-medium'>
+            <td>HR-WKS-002</td>
+            <td>10.10.20.12</td>
+            <td>macOS</td>
+            <td>production</td>
+            <td>medium</td>
+            <td data-num='20'>20</td>
+            <td data-num='25'>25</td>
+            <td>medium</td>
+            <td>encrypted, remote-user</td>
+        </tr>
+        
+        <tr class='row-medium'>
+            <td>SALES-WKS-001</td>
+            <td>10.10.50.11</td>
+            <td>Windows 11 Pro</td>
+            <td>production</td>
+            <td>medium</td>
+            <td data-num='19'>19</td>
+            <td data-num='25'>25</td>
+            <td>medium</td>
+            <td>crm-access, remote-user</td>
+        </tr>
+        
+        <tr class='row-medium'>
+            <td>OPS-WKS-001</td>
+            <td>10.10.70.11</td>
+            <td>Windows 11 Pro</td>
+            <td>production</td>
+            <td>medium</td>
+            <td data-num='26'>26</td>
+            <td data-num='25'>25</td>
+            <td>medium</td>
+            <td>erp-access, shared-device</td>
+        </tr>
+        
+        <tr class='row-low'>
+            <td>MKT-WKS-001</td>
+            <td>10.10.40.11</td>
+            <td>Windows 11 Pro</td>
+            <td>production</td>
+            <td>low</td>
+            <td data-num='30'>30</td>
+            <td data-num='20'>20</td>
+            <td>low</td>
+            <td>design-suite, cloud-only</td>
+        </tr>
+        
+        <tr class='row-low'>
+            <td>ENG-WKS-003</td>
+            <td>10.10.30.23</td>
+            <td>macOS</td>
+            <td>development</td>
+            <td>medium</td>
+            <td data-num='27'>27</td>
+            <td data-num='13'>13</td>
+            <td>low</td>
+            <td>developer-tools, remote-user</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <div class="note">CIS Control 7.3: Remediate critical vulnerabilities within ~15 days. PCI-DSS 6.2: Patch in-scope systems within ~30 days of vendor release.</div>
+  </div>
+</body>
+</html>
